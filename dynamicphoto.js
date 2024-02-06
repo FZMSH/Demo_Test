@@ -1,3 +1,5 @@
+input = document.querySelector('input')
+
 var data=[
     {name:'Mohmina', src:'https://images.pexels.com/photos/6934325/pexels-photo-6934325.png?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1'},
     {name:'Harshita', src:'https://images.pexels.com/photos/774909/pexels-photo-774909.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1'},
@@ -15,3 +17,20 @@ data.forEach(function(elem){
 </div>`
 })
 document.querySelector('.people').innerHTML=pers;
+
+input.addEventListener('input',function(){
+  var matching =  data.filter(function(e){
+       return e.name.startsWith(input.value)
+    })
+    var newusers = '';
+   matching.forEach(function(elem){
+    newusers+= `<div class="person">
+    <div class="img">
+        <img src="${elem.src}" alt="">
+    </div>
+    <h3>${elem.name}</h3>
+</div>`
+})
+document.querySelector('.people').innerHTML=newusers;
+})
+
